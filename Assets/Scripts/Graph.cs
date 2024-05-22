@@ -21,5 +21,8 @@ public class Graph
         nodes.Add(newNode);
     }
 
-   
+    public List<Node> GetNodes()
+    {
+        return nodes;
+    }
 }
