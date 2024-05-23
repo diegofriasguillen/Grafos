@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Node node in graph.GetNodes())
         {
-            Vector3 position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0); 
+            Vector3 position = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
             GameObject nodeGO = Instantiate(nodePrefab, position, Quaternion.identity);
             nodeObjectMap[node] = nodeGO;
             nodeGameObjects.Add(nodeGO);
