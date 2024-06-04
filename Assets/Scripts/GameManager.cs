@@ -78,14 +78,14 @@ public class GameManager : MonoBehaviour
         {
             foreach (Edge edge in node.GetEdges())
             {
-                if (!nodeObjectMap.ContainsKey(edge.Node1()) || !nodeObjectMap.ContainsKey(edge.Node2()))
+                if (!nodeObjectMap.ContainsKey(edge.GetFromNode()) || !nodeObjectMap.ContainsKey(edge.GetToNode()))
                     continue;
 
                 GameObject lineGO = Instantiate(linePrefab);
                 LineRenderer lr = lineGO.GetComponent<LineRenderer>();
                 lr.positionCount = 2;
-                lr.SetPosition(0, nodeObjectMap[edge.Node1()].transform.position);
-                lr.SetPosition(1, nodeObjectMap[edge.Node2()].transform.position);
+                lr.SetPosition(0, nodeObjectMap[edge.GetFromNode()].transform.position);
+                lr.SetPosition(1, nodeObjectMap[edge.GetToNode()].transform.position);
                 lineGameObjects.Add(lineGO);
             }
         }

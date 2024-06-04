@@ -6,6 +6,9 @@ public class Graph
 {
     private List<Node> nodes = new List<Node>();
 
+    //Djkstras
+    private List<Edge> edgesToVisit = new List<Edge>();
+
     public Graph()
     {
         nodes = new List<Node>();
@@ -26,7 +29,44 @@ public class Graph
         return nodes;
     }
 
-     //BFS!
+    //Djkstras
+    public void Djkstras(Node inicio, Node meta)
+    {
+        DjkstrasVisitNode(inicio);
+        Edge tempEdge = GetNextEdge();
+        if(tempEdge.GetFromNode() == inicio)
+        {
+            DjkstrasVisitNode(tempEdge.GetToNode());
+        }
+        else
+        {
+            DjkstrasVisitNode(tempEdge.GetFromNode());
+        }
+    }
+
+    private void DjkstrasVisitNode(Node n)
+    {
+        foreach (Edge edge in n.GetEdges())
+        {
+            edgesToVisit.Add(edge);
+        }
+    }
+
+    private Edge GetNextEdge()
+    {
+        Edge edgeTempMax = edgesToVisit[0]; 
+
+        for (int i = 1; i < edgesToVisit.Count; i++)
+        {
+            if (edgesToVisit[i].GetWeight() > edgesToVisit[i + 1].GetWeight())
+            {
+                edgeTempMax = edgesToVisit[i];
+            }
+        }
+        return edgeTempMax;
+    }
+
+    //BFS!
     //public void BFS(Node n)
     //{
     //    List<Node> nodesToVisit = new List<Node>();
@@ -115,4 +155,5 @@ public class Graph
     //        }
     //    }
     //}
+
 }

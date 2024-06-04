@@ -4,38 +4,58 @@ using UnityEngine;
 
 public class Edge
 {
-    Node _node1;
-    Node _node2;
+    Node _fromNode;
+    Node _toNode;
     float _distance;
+
+    private float _weight;
+    private bool _visited;
 
     public Edge(ref Node one, ref Node two)
     {
-        _node1 = one;
-        _node2 = two;
-
-       
+        _fromNode = one;
+        _toNode = two;
 
     }
-    public Node Node1()
+    public Node GetFromNode()
     {
-        return _node1;
+        return _fromNode;
 
     }
 
-    public void SetNum1(ref Node node1)
+    public void SetFromNode(ref Node node1)
     {
-        _node1 = node1;
+        _fromNode = node1;
     }
 
-    public Node Node2()
+    public Node GetToNode()
     {
-        return _node2;
+        return _toNode;
 
     }
 
-    public void SetNum2(ref Node node2)
+    public void SetToNode(ref Node node2)
     {
-        _node2 = node2;
+        _toNode = node2;
     }
 
+    public void SetWeight(float weight)
+    {
+        _weight = weight;
+    }
+
+    public float GetWeight()
+    {
+        return _weight;
+    }
+
+    public void SetVisited(bool visited)
+    {
+        _visited = visited;
+    }
+
+    public bool GetVisited()
+    {
+        return _visited;
+    }
 }
